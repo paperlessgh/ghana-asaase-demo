@@ -310,7 +310,7 @@ export function AssignLandArea() {
                   <span className="font-semibold">
                     Land Owner Ghana Card ID:
                   </span>{" "}
-                  {assignLandValues?.ghanaCardId}
+                  GHA-{assignLandValues?.ghanaCardId}
                 </p>
               </div>
             </DialogDescription>

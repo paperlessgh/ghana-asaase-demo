@@ -309,7 +309,7 @@ export function ChangeLandOwnershipArea() {
                   <span className="font-semibold">
                     New Land Owner Ghana Card ID:
                   </span>{" "}
-                  {changeLandOwnershipValues?.newOwnerGhanaCardId}
+                  GHA-{changeLandOwnershipValues?.newOwnerGhanaCardId}
                 </p>
                 <p>
                   <span className="font-semibold">
