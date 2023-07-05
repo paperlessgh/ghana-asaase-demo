@@ -61,8 +61,6 @@ export default function IndexPage() {
         <div className="flex flex-wrap items-center justify-center gap-4">
           <Web3WalletButton>Connect Wallet</Web3WalletButton>
           <Link
-            target="_blank"
-            rel="noreferrer"
             href="/app/lookup-land"
             className={buttonVariants({ variant: "outline" })}
           >
@@ -75,7 +73,7 @@ export default function IndexPage() {
         <div className="py-16 md:py-20">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto max-w-2xl lg:text-center">
-              <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-3xl md:text-4xl">
+              <h2 className="mt-2 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
                 Benefits of using Ghana Asaase
               </h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">

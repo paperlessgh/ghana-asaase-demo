@@ -85,9 +85,13 @@ export function AssignLandArea() {
   //  prepared contract config
   const { config: assignLandConfig } = usePrepareContractWrite({
     address: process.env.CONTRACT_ADDRESS as `0x${string}`,
+    // abi of the contract
     abi: abi,
+    // chainId of the network your contract is deployed
     chainId: sepolia.id,
+    // name of the function as specified in the contract
     functionName: "assignOwnership",
+    // function arguments
     args: [
       assignLandValues?.landPostalCode,
       `GHA-${assignLandValues?.ghanaCardId}`,
@@ -101,9 +105,13 @@ export function AssignLandArea() {
     isSuccess: loIsSuccess,
   } = useContractRead({
     address: process.env.CONTRACT_ADDRESS as `0x${string}`,
+    // abi of the contract
     abi: abi,
+    // chainId of the network your contract is deployed
     chainId: sepolia.id,
+    // name of the function as specified in the contract
     functionName: "landOwner",
+    // function arguments
     args: [assignLandValues?.landPostalCode],
   })
   const {
@@ -184,6 +192,16 @@ export function AssignLandArea() {
           ),
         })
       }
+    } else {
+      toast({
+        className: "bg-blue-600",
+        title: "Info!",
+        description: (
+          <p className="text-white">
+            Make sure you have connected your wallet and the connect wallet is an admin wallet.
+          </p>
+        ),
+      })
     }
   }
 

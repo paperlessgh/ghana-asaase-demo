@@ -9,7 +9,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { RefreshCw } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { useContractRead } from "wagmi"
-import { sepolia } from "wagmi/chains"
+import { polygonMumbai } from "wagmi/chains"
 import * as z from "zod"
 
 // components
@@ -62,9 +62,13 @@ export function LookupLandArea() {
   // contract hooks
   const { data, error, isError, isLoading, isSuccess } = useContractRead({
     address: process.env.CONTRACT_ADDRESS as `0x${string}`,
+    // abi of the contract
     abi: abi,
-    chainId: sepolia.id,
+    // chainId of the network your contract is deployed
+    chainId: polygonMumbai.id,
+    // name of the function you want to call
     functionName: "landOwner",
+    // arguments of the function you want to call
     args: [landPostalCode],
   })
 

@@ -16,7 +16,7 @@ import {
   usePrepareContractWrite,
   useAccount,
 } from "wagmi"
-import { sepolia } from "wagmi/chains"
+import { polygonMumbai } from "wagmi/chains"
 import * as z from "zod"
 
 // components
@@ -94,9 +94,13 @@ export function ChangeLandOwnershipArea() {
   //  prepared contract config
   const { config: changeOwnershipConfig } = usePrepareContractWrite({
     address: process.env.CONTRACT_ADDRESS as `0x${string}`,
+    // abi of the contract
     abi: abi,
-    chainId: sepolia.id,
+    // chainId of the network your contract is deployed
+    chainId: polygonMumbai.id, 
+    // name of the function as specified in the contract
     functionName: "changeOwnership",
+    // args passed to the function
     args: [
       changeLandOwnershipValues?.landPostalCode,
       `GHA-${changeLandOwnershipValues?.newOwnerGhanaCardId}`,
@@ -111,9 +115,13 @@ export function ChangeLandOwnershipArea() {
     isSuccess: loIsSuccess,
   } = useContractRead({
     address: process.env.CONTRACT_ADDRESS as `0x${string}`,
+    // abi of the contract
     abi: abi,
-    chainId: sepolia.id,
+    // chainId of the network your contract is deployed
+    chainId: polygonMumbai.id,
+    // name of the function as specified in the contract
     functionName: "landOwner",
+    // args passed to the function
     args: [changeLandOwnershipValues?.landPostalCode],
   })
   const {
@@ -188,6 +196,16 @@ export function ChangeLandOwnershipArea() {
           ),
         })
       }
+    } else {
+      toast({
+        className: "bg-blue-600",
+        title: "Info!",
+        description: (
+          <p className="text-white">
+            Make sure you have connected your wallet and the connect wallet is an admin wallet.
+          </p>
+        ),
+      })
     }
   }
 

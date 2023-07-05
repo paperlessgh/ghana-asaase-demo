@@ -4,7 +4,7 @@ import {
   w3mConnectors,
   w3mProvider,
 } from "@web3modal/ethereum";
-import { mainnet, sepolia } from "wagmi/chains";
+import { mainnet, sepolia, bscTestnet, polygonMumbai } from "wagmi/chains";
 import { configureChains, createConfig } from "wagmi";
 
 // configure web3modal
@@ -15,7 +15,8 @@ if (!process.env.WEB3_PROJECT_ID) {
 export const projectId = process.env.WEB3_PROJECT_ID;
 
 // 2. Configure wagmi config (change chain to mainnet on production)
-export const supportedChains = [mainnet, sepolia];
+// add the right chain(s) based on where your smart contract is deployed
+export const supportedChains = [mainnet, polygonMumbai]; 
 const { publicClient } = configureChains(supportedChains, [
   w3mProvider({ projectId }),
 ]);
